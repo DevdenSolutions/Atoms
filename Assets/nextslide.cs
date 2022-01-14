@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Lean.Transition;
 
 public class nextslide : MonoBehaviour
 {
@@ -24,7 +25,6 @@ public class nextslide : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void next()
@@ -59,5 +59,16 @@ public class nextslide : MonoBehaviour
 
         slides[slideindex].TurnOn();
 
+    }
+
+    public void ResetSlide()
+    {
+
+        slides[slideindex].TurnOff();
+        transform.EventTransition(() =>
+        {
+            slides[slideindex].TurnOn();
+
+        }, 0.2f);
     }
 }
